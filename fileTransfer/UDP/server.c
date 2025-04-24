@@ -13,11 +13,10 @@ void recv_file(int sockfd, struct sockaddr_in clientaddr)
     FILE *fp;
     char *filename = "received.txt";
     fp = fopen(filename, "w");
-
-    int len = sizeof(clientaddr);
     char buff[max];
-    bzero(buff, max);
 
+    bzero(buff, max);
+    int len = sizeof(clientaddr);
     while (1)
     {
         recvfrom(sockfd, buff, max, 0, (SA *)&clientaddr, &len);

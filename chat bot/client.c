@@ -44,3 +44,6 @@ int main()
     sendMess(sockfd);
     close(sockfd);
 }
+
+// gcc client.c -o client
+// ./client

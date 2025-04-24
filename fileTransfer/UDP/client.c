@@ -13,10 +13,11 @@ void send_file(int sockfd, struct sockaddr_in serveraddr)
     FILE *fp;
     char *filename = "temp.txt";
     fp = fopen(filename, "r");
-
     char buff[max];
+
     bzero(buff, max);
     printf("sending file...\n");
+
     while (fgets(buff, max, fp) != NULL)
     {
         sendto(sockfd, buff, max, 0, (SA *)&serveraddr, sizeof(serveraddr));

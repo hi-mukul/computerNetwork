@@ -3,8 +3,6 @@
 #include <unistd.h>
 #include <string.h>
 #include <arpa/inet.h>
-#include <sys/socket.h>
-#include <sys/types.h>
 
 #define SA struct sockaddr
 #define port 9000
@@ -19,8 +17,8 @@ void write_file(int connfd)
 
     while (1)
     {
-        int res = recv(connfd, buff, max, 0);
-        if (res <= 0)
+        int bytes = recv(connfd, buff, max, 0);
+        if (bytes <= 0)
             return;
         fprintf(fp, "%s", buff);
         bzero(buff, max);
@@ -47,5 +45,4 @@ int main()
 
     write_file(connfd);
     close(connfd);
-    printf("exiting program\n");
 }

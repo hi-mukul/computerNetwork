@@ -10,8 +10,7 @@
 
 void send_file(FILE *fp, int sockfd)
 {
-    // FILE *fp;
-
+    FILE *fp;
     char *filename = "temp.txt";
     fp = fopen(filename, "r");
     char buff[max] = {0};
